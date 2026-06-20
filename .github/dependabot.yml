@@ -6,6 +6,14 @@
 version: 2
 updates:
   - package-ecosystem: 'npm' # See documentation for possible values
+    groups:
+      # Collapse minor + patch updates into ONE grouped PR per cycle so they
+      # don't drift as N separate PRs. Majors stay individual for human review.
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
     directory: '/' # Location of package manifests
     schedule:
       interval: 'weekly'
